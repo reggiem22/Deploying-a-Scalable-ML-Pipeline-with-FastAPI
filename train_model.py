@@ -76,21 +76,24 @@ print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}")
 # TODO: compute the performance on model slices using the performance_on_categorical_slice function
 # iterate through the categorical features
 for col in cat_features:
-    # iterate through the unique values in one categorical feature
     for slicevalue in sorted(test[col].unique()):
-        count = test[test[col] == slicevalue].shape[0]
+        # ✅ Filter the test set to only include rows with the current slice value
+        data_slice = test[test[col] == slicevalue]
+        count = data_slice.shape[0]
+
+        # ✅ Pass the sliced data to the performance function
         p, r, fb = performance_on_categorical_slice(
-            # your code here
-            # use test, col and slicevalue as part of the input
-           test,
-           column_name=col,
-           slice_value=slicevalue,
-           categorical_features=cat_features,
-           label="salary",
-           encoder=encoder,
-           lb=lb,
-           model=model
+            data_slice,
+            column_name=col,
+            slice_value=slicevalue,
+            categorical_features=cat_features,
+            label="salary",
+            encoder=encoder,
+            lb=lb,
+            model=model
         )
+
+        # ✅ Save slice metrics to the file
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
