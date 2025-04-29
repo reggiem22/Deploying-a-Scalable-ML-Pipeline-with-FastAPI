@@ -2,34 +2,20 @@ import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
 # TODO: add necessary import
+from ml.data import process_data
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 
-# Optional: implement hyperparameter tuning.
-def train_model(X_train, y_train):
-    """
-    Trains a machine learning model and returns it.
 
-    Inputs
-    ------
-    X_train : np.array
-        Training data.
-    y_train : np.array
-        Labels.
-    Returns
-    -------
-    model
-        Trained machine learning model.
-    """
     # TODO: implement the function
-    def train_model(X_train, y_train):
-    """
-    Trains a machine learning model and returns it.
-    """
-    model = RandomForestClassifier(random_state=42)
-    model.fit(X_train, y_train)
-    return model
+def train_model(X_train, y_train):
+  """
+  Trains a machine learning model and returns it.
+  """
+  model = RandomForestClassifier(random_state=42)
+  model.fit(X_train, y_train)
+  return model
 
 
 def compute_model_metrics(y, preds):
@@ -68,9 +54,7 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    # TODO: implement the function
-    def inference(model, X):
-    """ Run model inferences and return the predictions. """
+    #TODO: implement the function
     return model.predict(X)
 
 def save_model(model, path):
@@ -84,7 +68,6 @@ def save_model(model, path):
         Path to save pickle file.
     """
     # TODO: implement the function
-    def save_model(model, path):
     """ Serializes model to a file. """
     with open(path, 'wb') as f:
         pickle.dump(model, f)
@@ -92,7 +75,6 @@ def save_model(model, path):
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
     # TODO: implement the function
-    def load_model(path):
     """ Loads pickle file from `path` and returns it. """
     with open(path, 'rb') as f:
         return pickle.load(f)
@@ -137,7 +119,7 @@ def performance_on_categorical_slice(
     # TODO: implement the function
     X_slice, y_slice, _, _ = process_data(
         
-    sliced_data,
+    data,
     categorical_features=categorical_features,
     label=label,
     training=False,
