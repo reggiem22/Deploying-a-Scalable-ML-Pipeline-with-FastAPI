@@ -90,3 +90,7 @@ Evaluate the model regularly for fairness and ensure its predictions are not dis
 
 Use the model as one part of a broader decision-making process, always involving human oversight in sensitive areas like hiring, loan approvals, or healthcare.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e34613d1aa541c66e5a487fc23917f154d95d1b
